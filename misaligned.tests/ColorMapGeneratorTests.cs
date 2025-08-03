@@ -7,13 +7,18 @@ namespace MisalignedSpace.Tests
 {
     public class ColorMapGeneratorTests
     {
+        private ColorMapGenerator CreateColorMapGenerator()
+        {
+            var formatter = new ColorMapFormatter();
+            var writer = new TestOutputWriter();
+            return new ColorMapGenerator(formatter, writer);
+        }
+
         [Fact]
         public void GenerateColorMap_ShouldReturnCorrectNumberOfEntries()
         {
             // Arrange
-            var formatter = new ColorMapFormatter();
-            var writer = new TestOutputWriter();
-            var generator = new ColorMapGenerator(formatter, writer);
+            var generator = CreateColorMapGenerator();
             
             // Act
             var result = generator.GenerateColorMap();
@@ -26,9 +31,7 @@ namespace MisalignedSpace.Tests
         public void GetTotalEntries_ShouldReturn25()
         {
             // Arrange
-            var formatter = new ColorMapFormatter();
-            var writer = new TestOutputWriter();
-            var generator = new ColorMapGenerator(formatter, writer);
+            var generator = CreateColorMapGenerator();
             
             // Act
             var result = generator.GetTotalEntries();
@@ -45,9 +48,7 @@ namespace MisalignedSpace.Tests
             // But currently minorColors[i] is used instead of minorColors[j]
             
             // Arrange
-            var formatter = new ColorMapFormatter();
-            var writer = new TestOutputWriter();
-            var generator = new ColorMapGenerator(formatter, writer);
+            var generator = CreateColorMapGenerator();
             
             // Act
             var result = generator.GenerateColorMap();
@@ -68,9 +69,7 @@ namespace MisalignedSpace.Tests
             // Another test to expose the bug - each minor color should appear 5 times
             
             // Arrange
-            var formatter = new ColorMapFormatter();
-            var writer = new TestOutputWriter();
-            var generator = new ColorMapGenerator(formatter, writer);
+            var generator = CreateColorMapGenerator();
             
             // Act
             var result = generator.GenerateColorMap();
