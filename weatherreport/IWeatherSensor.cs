@@ -2,7 +2,7 @@
 
 namespace TemperatureSpace
 {
-    internal interface IWeatherSensor
+    public interface IWeatherSensor
     {
         double TemperatureInC();
         int Precipitation();
